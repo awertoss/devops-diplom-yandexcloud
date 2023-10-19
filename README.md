@@ -64,6 +64,150 @@ key_algorithm: RSA_2048
 Создал конфигурацию.
 Конфиг: [terraform](terraform/)
 ```
+В папке 1bucket.
+terraform init
+terraform apply
+erraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # data.template_file.provider will be read during apply
+  # (config refers to values not yet known)
+ <= data "template_file" "provider" {
+      + id       = (known after apply)
+      + rendered = (known after apply)
+      + template = <<-EOT
+            terraform {
+              required_providers {
+                yandex = {
+                  source  = "yandex-cloud/yandex"
+                  version = "0.78.2"
+                }
+              }
+              backend "s3" {
+                endpoint   = "storage.yandexcloud.net"
+                bucket     = "dimploma-bucket"
+                region     = "ru-central1"
+                key        = "terraform.tfstate"
+                access_key = "${access_key}"
+                secret_key = "${secret_key}"
+
+                skip_region_validation      = true
+                skip_credentials_validation = true
+              }
+            }
+
+            provider "yandex" {
+              service_account_key_file = "key.json"
+              cloud_id                 = var.yandex_cloud_id
+              folder_id                = var.yandex_folder_id
+              zone                     = var.yandex_compute_default_zone
+            }
+        EOT
+      + vars     = {
+          + "access_key" = (known after apply)
+          + "secret_key" = (sensitive value)
+        }
+    }
+
+  # null_resource.provider will be created
+  + resource "null_resource" "provider" {
+      + id       = (known after apply)
+      + triggers = {
+          + "template" = (known after apply)
+        }
+    }
+
+  # yandex_iam_service_account.bucket-operator will be created
+  + resource "yandex_iam_service_account" "bucket-operator" {
+      + created_at = (known after apply)
+      + folder_id  = "b1gd02p4ii36h57v2h14"
+      + id         = (known after apply)
+      + name       = "bucket-operator"
+    }
+
+  # yandex_iam_service_account_static_access_key.bucket-operator will be created
+  + resource "yandex_iam_service_account_static_access_key" "bucket-operator" {
+      + access_key           = (known after apply)
+      + created_at           = (known after apply)
+      + description          = "static access key for object storage"
+      + encrypted_secret_key = (known after apply)
+      + id                   = (known after apply)
+      + key_fingerprint      = (known after apply)
+      + secret_key           = (sensitive value)
+      + service_account_id   = (known after apply)
+    }
+
+  # yandex_resourcemanager_folder_iam_member.editor will be created
+  + resource "yandex_resourcemanager_folder_iam_member" "editor" {
+      + folder_id = "b1gd02p4ii36h57v2h14"
+      + id        = (known after apply)
+      + member    = (known after apply)
+      + role      = "editor"
+    }
+
+  # yandex_resourcemanager_folder_iam_member.viewer will be created
+  + resource "yandex_resourcemanager_folder_iam_member" "viewer" {
+      + folder_id = "b1gd02p4ii36h57v2h14"
+      + id        = (known after apply)
+      + member    = (known after apply)
+      + role      = "viewer"
+    }
+
+  # yandex_storage_bucket.bucket will be created
+  + resource "yandex_storage_bucket" "bucket" {
+      + access_key            = (known after apply)
+      + acl                   = "private"
+      + bucket                = "dimploma-bucket"
+      + bucket_domain_name    = (known after apply)
+      + default_storage_class = (known after apply)
+      + folder_id             = (known after apply)
+      + force_destroy         = false
+      + id                    = (known after apply)
+      + secret_key            = (sensitive value)
+      + website_domain        = (known after apply)
+      + website_endpoint      = (known after apply)
+
+      + anonymous_access_flags {
+          + list = false
+          + read = false
+        }
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+yandex_iam_service_account.bucket-operator: Creating...
+yandex_iam_service_account.bucket-operator: Creation complete after 3s [id=aje6indu47gf5s6qre61]
+yandex_resourcemanager_folder_iam_member.editor: Creating...
+yandex_iam_service_account_static_access_key.bucket-operator: Creating...
+yandex_resourcemanager_folder_iam_member.viewer: Creating...
+yandex_iam_service_account_static_access_key.bucket-operator: Creation complete after 1s [id=ajegdfu1ab148on51047]
+data.template_file.provider: Reading...
+data.template_file.provider: Read complete after 0s [id=b9e5c9bdad76df249c6690b8d9e628fd4e528f494424109f663622f07801ae87]
+yandex_storage_bucket.bucket: Creating...
+null_resource.provider: Creating...
+null_resource.provider: Provisioning with 'local-exec'...
+null_resource.provider (local-exec): Executing: ["/bin/sh" "-c" "cat <<\"EOF\" > \"../01-yandex/provider.tf\"\nterraform {\n  required_providers {\n    yandex = {\n      source  = \"yandex-cloud/yandex\"\n      version = \"0.78.2\"\n    }\n  }\n  backend \"s3\" {\n    endpoint   = \"storage.yandexcloud.net\"\n    bucket     = \"dimploma-bucket\"\n    region     = \"ru-central1\"\n    key        = \"terraform.tfstate\"\n    access_key = \"YCAJELd3vPu5n0sPSw-xJ2nVG\"\n    secret_key = \"YCNRrUfOcy_o5Dw4e1CCL0f4gll04uDgrjNHASGY\"\n\n    skip_region_validation      = true\n    skip_credentials_validation = true\n  }\n}\n\nprovider \"yandex\" {\n  service_account_key_file = \"key.json\"\n  cloud_id                 = var.yandex_cloud_id\n  folder_id                = var.yandex_folder_id\n  zone                     = var.yandex_compute_default_zone\n}\nEOF"]
+null_resource.provider: Creation complete after 0s [id=7198521973614250344]
+yandex_resourcemanager_folder_iam_member.editor: Creation complete after 4s [id=b1gd02p4ii36h57v2h14/editor/serviceAccount:aje6indu47gf5s6qre61]
+yandex_resourcemanager_folder_iam_member.viewer: Creation complete after 8s [id=b1gd02p4ii36h57v2h14/viewer/serviceAccount:aje6indu47gf5s6qre61]
+yandex_storage_bucket.bucket: Still creating... [10s elapsed]
+yandex_storage_bucket.bucket: Still creating... [20s elapsed]
+yandex_storage_bucket.bucket: Still creating... [30s elapsed]
+yandex_storage_bucket.bucket: Still creating... [40s elapsed]
+yandex_storage_bucket.bucket: Still creating... [50s elapsed]
+yandex_storage_bucket.bucket: Still creating... [1m0s elapsed]
+yandex_storage_bucket.bucket: Creation complete after 1m7s [id=dimploma-bucket]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
 
 
