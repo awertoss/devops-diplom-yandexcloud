@@ -204,6 +204,23 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 ```
    
 3. Создайте VPC с подсетями в разных зонах доступности.
+
+```
+В папке yandex
+terraform init
+
+terraform workspace new stage
+Created and switched to workspace "stage"!
+
+terraform workspace new prod
+Created and switched to workspace "prod"!
+
+terraform workspace select stage 
+terraform apply -auto-approve
+terraform workspace select prod 
+terraform apply -auto-approve
+
+```
 4. Убедитесь, что теперь вы можете выполнить команды `terraform destroy` и `terraform apply` без дополнительных ручных действий.
 5. В случае использования [Terraform Cloud](https://app.terraform.io/) в качестве [backend](https://www.terraform.io/docs/language/settings/backends/index.html) убедитесь, что применение изменений успешно проходит, используя web-интерфейс Terraform cloud.
 
