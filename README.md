@@ -38,19 +38,6 @@
 Предварительная подготовка к установке и запуску Kubernetes кластера.
 
 1. Создайте сервисный аккаунт, который будет в дальнейшем использоваться Terraform для работы с инфраструктурой с необходимыми и достаточными правами. Не стоит использовать права суперпользователя
-2. Подготовьте [backend](https://www.terraform.io/docs/language/settings/backends/index.html) для Terraform:  
-   а. Рекомендуемый вариант: S3 bucket в созданном ЯО аккаунте(создание бакета через TF)
-   б. Альтернативный вариант:  [Terraform Cloud](https://app.terraform.io/)  
-3. Создайте VPC с подсетями в разных зонах доступности.
-4. Убедитесь, что теперь вы можете выполнить команды `terraform destroy` и `terraform apply` без дополнительных ручных действий.
-5. В случае использования [Terraform Cloud](https://app.terraform.io/) в качестве [backend](https://www.terraform.io/docs/language/settings/backends/index.html) убедитесь, что применение изменений успешно проходит, используя web-интерфейс Terraform cloud.
-
-Ожидаемые результаты:
-
-1. Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
-2. Полученная конфигурация инфраструктуры является предварительной, поэтому в ходе дальнейшего выполнения задания возможны изменения.
-
-### Ответ
 
 Создал сервисный аккаунт.
 ```
@@ -61,6 +48,11 @@ created_at: "2023-10-19T12:58:37.377382352Z"
 key_algorithm: RSA_2048
 
 ```
+
+2. Подготовьте [backend](https://www.terraform.io/docs/language/settings/backends/index.html) для Terraform:  
+   а. Рекомендуемый вариант: S3 bucket в созданном ЯО аккаунте(создание бакета через TF)
+   б. Альтернативный вариант:  [Terraform Cloud](https://app.terraform.io/)
+
 Создал конфигурацию.
 Конфиг: [terraform](terraform/)
 ```
@@ -209,10 +201,21 @@ yandex_storage_bucket.bucket: Creation complete after 1m7s [id=dimploma-bucket]
 
 Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
-
-
-
 ```
+   
+3. Создайте VPC с подсетями в разных зонах доступности.
+4. Убедитесь, что теперь вы можете выполнить команды `terraform destroy` и `terraform apply` без дополнительных ручных действий.
+5. В случае использования [Terraform Cloud](https://app.terraform.io/) в качестве [backend](https://www.terraform.io/docs/language/settings/backends/index.html) убедитесь, что применение изменений успешно проходит, используя web-интерфейс Terraform cloud.
+
+Ожидаемые результаты:
+
+1. Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
+2. Полученная конфигурация инфраструктуры является предварительной, поэтому в ходе дальнейшего выполнения задания возможны изменения.
+
+### Ответ
+
+
+
 
 <p align="center">
   <img width="1200" src="terraform/ya1.jpg">
