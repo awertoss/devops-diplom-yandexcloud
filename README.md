@@ -208,20 +208,356 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 ```
 В папке yandex
 terraform init
+terraform apply
 
-terraform workspace new stage
-Created and switched to workspace "stage"!
-
-terraform workspace new prod
-Created and switched to workspace "prod"!
-
-terraform workspace select stage 
-terraform apply -auto-approve
-terraform workspace select prod 
-terraform apply -auto-approve
 
 ```
 4. Убедитесь, что теперь вы можете выполнить команды `terraform destroy` и `terraform apply` без дополнительных ручных действий.
+
+```
+terraform destroy
+yandex_vpc_network.subnet-zones: Refreshing state... [id=enpmjjka85nleq2eh0vq]
+yandex_vpc_subnet.subnet-zones[0]: Refreshing state... [id=e9bt2hu119pcpe8bt5ih]
+yandex_vpc_subnet.subnet-zones[1]: Refreshing state... [id=e2l9h7kdca59tnlfr0jb]
+yandex_vpc_subnet.subnet-zones[2]: Refreshing state... [id=b0cobv1hdjquntog8p7s]
+yandex_compute_instance.cluster-k8s[0]: Refreshing state... [id=fhmdjtjmvusivvv6ejh9]
+yandex_compute_instance.cluster-k8s[1]: Refreshing state... [id=epd1sm8prciqqf5pd8nm]
+yandex_compute_instance.cluster-k8s[2]: Refreshing state... [id=ef3sqdck9lsu7ks7v8he]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # yandex_compute_instance.cluster-k8s[0] will be destroyed
+  - resource "yandex_compute_instance" "cluster-k8s" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2023-10-19T14:34:26Z" -> null
+      - folder_id                 = "b1gd02p4ii36h57v2h14" -> null
+      - fqdn                      = "node-0.ru-central1.internal" -> null
+      - hostname                  = "node-0" -> null
+      - id                        = "fhmdjtjmvusivvv6ejh9" -> null
+      - labels                    = {
+          - "index" = "0"
+        } -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQChagP/ru7i2nsezPZ+D+re2Yi/jSQ7e5BF7VpB8N94I4oknRQtvALakYzvMHmeGhfsT2swHG1MUxwPHpSANzYrDsz9IM49tybjTG7hUAjP1/wzQoEpzj0SS58q/G2EwuxJxgziUXTC/j9kpUgZ45h5w6U7gipzYWf1Xy0AAPCGI9CUKPc7uooPK2MZ4xM0VMSTdLrU6svToAdkefMqlyR0Ou4NlP6/6CFIrn5II03vT9LFJYcQvAttZyRTX9OsmIKZWSEDe82xPitVKGgur3ERGdzWXkaVYQeoGTwqL1c4pd7L02uAXylWwiyHQ5/DdhK5qMPWzl590KpG8QqFOVNoYEFntuQjHm0oGz3ftxnxjx9ZtnkiSo/lzSjlMXM1XzhOQd2hrjifKTXdC9gR0FVjkGCzvCoIkWzufriP2JncS1gseCBbrHwxQ7Ohlwzjf5NovfaGHdfD66BGHFxx4mLHjd9lQbl+vJgVUuJUNrleT0UTkOlrrIN5jRXrbkrPHDk= srg@ubuntuserver
+            EOT
+        } -> null
+      - name                      = "node-0" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-a" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "fhmpm6taif5nbrk3pgo3" -> null
+          - disk_id     = "fhmpm6taif5nbrk3pgo3" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd852pbtueis1q0pbt4o" -> null
+              - size       = 20 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - metadata_options {
+          - aws_v1_http_endpoint = 1 -> null
+          - aws_v1_http_token    = 2 -> null
+          - gce_http_endpoint    = 1 -> null
+          - gce_http_token       = 1 -> null
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "10.10.1.4" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:d9:f6:76:ff" -> null
+          - nat                = true -> null
+          - nat_ip_address     = "84.201.134.158" -> null
+          - nat_ip_version     = "IPV4" -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e9bt2hu119pcpe8bt5ih" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = true -> null
+        }
+    }
+
+  # yandex_compute_instance.cluster-k8s[1] will be destroyed
+  - resource "yandex_compute_instance" "cluster-k8s" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2023-10-19T14:34:26Z" -> null
+      - folder_id                 = "b1gd02p4ii36h57v2h14" -> null
+      - fqdn                      = "node-1.ru-central1.internal" -> null
+      - hostname                  = "node-1" -> null
+      - id                        = "epd1sm8prciqqf5pd8nm" -> null
+      - labels                    = {
+          - "index" = "1"
+        } -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQChagP/ru7i2nsezPZ+D+re2Yi/jSQ7e5BF7VpB8N94I4oknRQtvALakYzvMHmeGhfsT2swHG1MUxwPHpSANzYrDsz9IM49tybjTG7hUAjP1/wzQoEpzj0SS58q/G2EwuxJxgziUXTC/j9kpUgZ45h5w6U7gipzYWf1Xy0AAPCGI9CUKPc7uooPK2MZ4xM0VMSTdLrU6svToAdkefMqlyR0Ou4NlP6/6CFIrn5II03vT9LFJYcQvAttZyRTX9OsmIKZWSEDe82xPitVKGgur3ERGdzWXkaVYQeoGTwqL1c4pd7L02uAXylWwiyHQ5/DdhK5qMPWzl590KpG8QqFOVNoYEFntuQjHm0oGz3ftxnxjx9ZtnkiSo/lzSjlMXM1XzhOQd2hrjifKTXdC9gR0FVjkGCzvCoIkWzufriP2JncS1gseCBbrHwxQ7Ohlwzjf5NovfaGHdfD66BGHFxx4mLHjd9lQbl+vJgVUuJUNrleT0UTkOlrrIN5jRXrbkrPHDk= srg@ubuntuserver
+            EOT
+        } -> null
+      - name                      = "node-1" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epdqjqq5j1g9d9ou35ah" -> null
+          - disk_id     = "epdqjqq5j1g9d9ou35ah" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd852pbtueis1q0pbt4o" -> null
+              - size       = 20 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - metadata_options {
+          - aws_v1_http_endpoint = 1 -> null
+          - aws_v1_http_token    = 2 -> null
+          - gce_http_endpoint    = 1 -> null
+          - gce_http_token       = 1 -> null
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "10.10.2.19" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:1e:59:19:db" -> null
+          - nat                = true -> null
+          - nat_ip_address     = "62.84.122.154" -> null
+          - nat_ip_version     = "IPV4" -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2l9h7kdca59tnlfr0jb" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = true -> null
+        }
+    }
+
+  # yandex_compute_instance.cluster-k8s[2] will be destroyed
+  - resource "yandex_compute_instance" "cluster-k8s" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2023-10-19T14:34:26Z" -> null
+      - folder_id                 = "b1gd02p4ii36h57v2h14" -> null
+      - fqdn                      = "node-2.ru-central1.internal" -> null
+      - hostname                  = "node-2" -> null
+      - id                        = "ef3sqdck9lsu7ks7v8he" -> null
+      - labels                    = {
+          - "index" = "2"
+        } -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQChagP/ru7i2nsezPZ+D+re2Yi/jSQ7e5BF7VpB8N94I4oknRQtvALakYzvMHmeGhfsT2swHG1MUxwPHpSANzYrDsz9IM49tybjTG7hUAjP1/wzQoEpzj0SS58q/G2EwuxJxgziUXTC/j9kpUgZ45h5w6U7gipzYWf1Xy0AAPCGI9CUKPc7uooPK2MZ4xM0VMSTdLrU6svToAdkefMqlyR0Ou4NlP6/6CFIrn5II03vT9LFJYcQvAttZyRTX9OsmIKZWSEDe82xPitVKGgur3ERGdzWXkaVYQeoGTwqL1c4pd7L02uAXylWwiyHQ5/DdhK5qMPWzl590KpG8QqFOVNoYEFntuQjHm0oGz3ftxnxjx9ZtnkiSo/lzSjlMXM1XzhOQd2hrjifKTXdC9gR0FVjkGCzvCoIkWzufriP2JncS1gseCBbrHwxQ7Ohlwzjf5NovfaGHdfD66BGHFxx4mLHjd9lQbl+vJgVUuJUNrleT0UTkOlrrIN5jRXrbkrPHDk= srg@ubuntuserver
+            EOT
+        } -> null
+      - name                      = "node-2" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-c" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "ef3nqm32hquts6joscbg" -> null
+          - disk_id     = "ef3nqm32hquts6joscbg" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd852pbtueis1q0pbt4o" -> null
+              - size       = 20 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - metadata_options {
+          - aws_v1_http_endpoint = 1 -> null
+          - aws_v1_http_token    = 2 -> null
+          - gce_http_endpoint    = 1 -> null
+          - gce_http_token       = 1 -> null
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "10.10.3.10" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:1c:d3:59:44" -> null
+          - nat                = true -> null
+          - nat_ip_address     = "51.250.41.43" -> null
+          - nat_ip_version     = "IPV4" -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "b0cobv1hdjquntog8p7s" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = true -> null
+        }
+    }
+
+  # yandex_vpc_network.subnet-zones will be destroyed
+  - resource "yandex_vpc_network" "subnet-zones" {
+      - created_at                = "2023-10-19T14:34:21Z" -> null
+      - default_security_group_id = "enphjlu9tt1gkdc7g2b2" -> null
+      - folder_id                 = "b1gd02p4ii36h57v2h14" -> null
+      - id                        = "enpmjjka85nleq2eh0vq" -> null
+      - labels                    = {} -> null
+      - name                      = "net" -> null
+      - subnet_ids                = [
+          - "b0cobv1hdjquntog8p7s",
+          - "e2l9h7kdca59tnlfr0jb",
+          - "e9bt2hu119pcpe8bt5ih",
+        ] -> null
+    }
+
+  # yandex_vpc_subnet.subnet-zones[0] will be destroyed
+  - resource "yandex_vpc_subnet" "subnet-zones" {
+      - created_at     = "2023-10-19T14:34:24Z" -> null
+      - folder_id      = "b1gd02p4ii36h57v2h14" -> null
+      - id             = "e9bt2hu119pcpe8bt5ih" -> null
+      - labels         = {} -> null
+      - name           = "subnet-ru-central1-a" -> null
+      - network_id     = "enpmjjka85nleq2eh0vq" -> null
+      - v4_cidr_blocks = [
+          - "10.10.1.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-a" -> null
+    }
+
+  # yandex_vpc_subnet.subnet-zones[1] will be destroyed
+  - resource "yandex_vpc_subnet" "subnet-zones" {
+      - created_at     = "2023-10-19T14:34:23Z" -> null
+      - folder_id      = "b1gd02p4ii36h57v2h14" -> null
+      - id             = "e2l9h7kdca59tnlfr0jb" -> null
+      - labels         = {} -> null
+      - name           = "subnet-ru-central1-b" -> null
+      - network_id     = "enpmjjka85nleq2eh0vq" -> null
+      - v4_cidr_blocks = [
+          - "10.10.2.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-b" -> null
+    }
+
+  # yandex_vpc_subnet.subnet-zones[2] will be destroyed
+  - resource "yandex_vpc_subnet" "subnet-zones" {
+      - created_at     = "2023-10-19T14:34:25Z" -> null
+      - folder_id      = "b1gd02p4ii36h57v2h14" -> null
+      - id             = "b0cobv1hdjquntog8p7s" -> null
+      - labels         = {} -> null
+      - name           = "subnet-ru-central1-c" -> null
+      - network_id     = "enpmjjka85nleq2eh0vq" -> null
+      - v4_cidr_blocks = [
+          - "10.10.3.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-c" -> null
+    }
+
+Plan: 0 to add, 0 to change, 7 to destroy.
+
+Changes to Outputs:
+  - external_ip_address_nodes = {
+      - node-0 = "84.201.134.158"
+      - node-1 = "62.84.122.154"
+      - node-2 = "51.250.41.43"
+    } -> null
+  - internal_ip_address_nodes = {
+      - node-0 = "10.10.1.4"
+      - node-1 = "10.10.2.19"
+      - node-2 = "10.10.3.10"
+    } -> null
+
+Do you really want to destroy all resources in workspace "stage"?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+yandex_compute_instance.cluster-k8s[1]: Destroying... [id=epd1sm8prciqqf5pd8nm]
+yandex_compute_instance.cluster-k8s[0]: Destroying... [id=fhmdjtjmvusivvv6ejh9]
+yandex_compute_instance.cluster-k8s[2]: Destroying... [id=ef3sqdck9lsu7ks7v8he]
+yandex_compute_instance.cluster-k8s[1]: Still destroying... [id=epd1sm8prciqqf5pd8nm, 10s elapsed]
+yandex_compute_instance.cluster-k8s[2]: Still destroying... [id=ef3sqdck9lsu7ks7v8he, 10s elapsed]
+yandex_compute_instance.cluster-k8s[0]: Still destroying... [id=fhmdjtjmvusivvv6ejh9, 10s elapsed]
+yandex_compute_instance.cluster-k8s[1]: Still destroying... [id=epd1sm8prciqqf5pd8nm, 20s elapsed]
+yandex_compute_instance.cluster-k8s[0]: Still destroying... [id=fhmdjtjmvusivvv6ejh9, 20s elapsed]
+yandex_compute_instance.cluster-k8s[2]: Still destroying... [id=ef3sqdck9lsu7ks7v8he, 20s elapsed]
+yandex_compute_instance.cluster-k8s[1]: Still destroying... [id=epd1sm8prciqqf5pd8nm, 30s elapsed]
+yandex_compute_instance.cluster-k8s[2]: Still destroying... [id=ef3sqdck9lsu7ks7v8he, 30s elapsed]
+yandex_compute_instance.cluster-k8s[0]: Still destroying... [id=fhmdjtjmvusivvv6ejh9, 30s elapsed]
+yandex_compute_instance.cluster-k8s[1]: Still destroying... [id=epd1sm8prciqqf5pd8nm, 40s elapsed]
+yandex_compute_instance.cluster-k8s[0]: Still destroying... [id=fhmdjtjmvusivvv6ejh9, 40s elapsed]
+yandex_compute_instance.cluster-k8s[2]: Still destroying... [id=ef3sqdck9lsu7ks7v8he, 40s elapsed]
+yandex_compute_instance.cluster-k8s[2]: Destruction complete after 42s
+yandex_compute_instance.cluster-k8s[1]: Destruction complete after 44s
+yandex_compute_instance.cluster-k8s[0]: Still destroying... [id=fhmdjtjmvusivvv6ejh9, 50s elapsed]
+yandex_compute_instance.cluster-k8s[0]: Destruction complete after 58s
+yandex_vpc_subnet.subnet-zones[2]: Destroying... [id=b0cobv1hdjquntog8p7s]
+yandex_vpc_subnet.subnet-zones[0]: Destroying... [id=e9bt2hu119pcpe8bt5ih]
+yandex_vpc_subnet.subnet-zones[1]: Destroying... [id=e2l9h7kdca59tnlfr0jb]
+yandex_vpc_subnet.subnet-zones[2]: Destruction complete after 4s
+yandex_vpc_subnet.subnet-zones[1]: Destruction complete after 7s
+yandex_vpc_subnet.subnet-zones[0]: Still destroying... [id=e9bt2hu119pcpe8bt5ih, 10s elapsed]
+yandex_vpc_subnet.subnet-zones[0]: Destruction complete after 12s
+yandex_vpc_network.subnet-zones: Destroying... [id=enpmjjka85nleq2eh0vq]
+yandex_vpc_network.subnet-zones: Destruction complete after 2s
+
+Destroy complete! Resources: 7 destroyed.
+
+```
+
 5. В случае использования [Terraform Cloud](https://app.terraform.io/) в качестве [backend](https://www.terraform.io/docs/language/settings/backends/index.html) убедитесь, что применение изменений успешно проходит, используя web-интерфейс Terraform cloud.
 
 Ожидаемые результаты:
