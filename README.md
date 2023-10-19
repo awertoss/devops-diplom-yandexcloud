@@ -54,7 +54,12 @@
 
 Создал сервисный аккаунт.
 ```
-yc iam key create --service-account-id ajeqo3jd1uq3dgmop86j --output key.json
+yc iam key create --service-account-id ajec9424efcbsco9cjl9 --output key.json
+id: ajeq1vccnvmbpkeogb27
+service_account_id: ajec9424efcbsco9cjl9
+created_at: "2023-10-19T12:58:37.377382352Z"
+key_algorithm: RSA_2048
+
 ```
 Создал конфигурацию.
 Конфиг: [terraform](terraform/)
