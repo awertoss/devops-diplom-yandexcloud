@@ -568,6 +568,7 @@ Destroy complete! Resources: 7 destroyed.
 <p align="center">
   <img width="1200" src="terraform/ya1.jpg">
 </p>
+
 ---
 ### Создание Kubernetes кластера
 
