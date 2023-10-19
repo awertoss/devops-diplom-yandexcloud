@@ -52,6 +52,10 @@
 
 ### Ответ
 
+Создал сервисный аккаунт.
+```
+yc iam key create --service-account-id ajeqo3jd1uq3dgmop86j --output key.json
+```
 Создал конфигурацию.
 Конфиг: [terraform](terraform/)
 ```
