@@ -608,6 +608,10 @@ Destroy complete! Resources: 7 destroyed.
 1. Git репозиторий с тестовым приложением и Dockerfile.
 2. Регистри с собранным docker image. В качестве регистри может быть DockerHub или [Yandex Container Registry](https://cloud.yandex.ru/services/container-registry), созданный также с помощью terraform.
 
+Репозиторий: [Git репозиторий](https://github.com/awertoss/myapp)
+
+Регистр: [Docker](https://hub.docker.com/r/awertoss/myapp/tags)
+
 ---
 ### Подготовка cистемы мониторинга и деплой приложения
 
