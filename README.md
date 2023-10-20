@@ -592,7 +592,17 @@ Destroy complete! Resources: 7 destroyed.
 
 ```
 Из папки kubespray
+Установка зависимостей
+pip install -r requirements.txt
+
 cp -rfp inventory/sample inventory/mycluster
+declare -a IPS=(51.250.32.69 51.250.28.209 51.250.87.99)
+
+
+
+Редактируем файл hosts.yaml руками. В частности добавим ansible_user: yc-user.
+mcedit kubespray/inventory/mycluster/hosts.yaml
+
 В файле hosts.yaml ставим ip ВМ yandex.
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
 
