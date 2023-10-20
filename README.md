@@ -590,6 +590,14 @@ Destroy complete! Resources: 7 destroyed.
 2. В файле `~/.kube/config` находятся данные для доступа к кластеру.
 3. Команда `kubectl get pods --all-namespaces` отрабатывает без ошибок.
 
+```
+Из папки kubespray
+cp -rfp inventory/sample inventory/mycluster
+В файле hosts.yaml ставим ip ВМ yandex.
+ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
+
+
+```
 ---
 ### Создание тестового приложения
 
