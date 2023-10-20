@@ -584,11 +584,6 @@ Destroy complete! Resources: 7 destroyed.
   а. С помощью terraform resource для [kubernetes](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/kubernetes_cluster) создать **региональный** мастер kubernetes с размещением нод в разных 3 подсетях      
   б. С помощью terraform resource для [kubernetes node group](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/kubernetes_node_group)
   
-Ожидаемый результат:
-
-1. Работоспособный Kubernetes кластер.
-2. В файле `~/.kube/config` находятся данные для доступа к кластеру.
-3. Команда `kubectl get pods --all-namespaces` отрабатывает без ошибок.
 
 ```
 Из папки kubespray
@@ -603,11 +598,28 @@ declare -a IPS=(51.250.32.69 51.250.28.209 51.250.87.99)
 Редактируем файл hosts.yaml руками. В частности добавим ansible_user: yc-user.
 mcedit kubespray/inventory/mycluster/hosts.yaml
 
-В файле hosts.yaml ставим ip ВМ yandex.
-ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
 
+ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
+....
+Friday 20 October 2023  14:19:54 +0000 (0:00:00.111)       0:24:16.923 ********
+Friday 20 October 2023  14:19:54 +0000 (0:00:00.064)       0:24:16.988 ********
+Friday 20 October 2023  14:19:54 +0000 (0:00:00.064)       0:24:17.052 ********
+
+PLAY RECAP ********************************************************************************************************************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node0                      : ok=751  changed=152  unreachable=0    failed=0    skipped=1285 rescued=0    ignored=8
+node1                      : ok=511  changed=94   unreachable=0    failed=0    skipped=784  rescued=0    ignored=1
+node2                      : ok=511  changed=94   unreachable=0    failed=0    skipped=783  rescued=0    ignored=1
 
 ```
+
+Ожидаемый результат:
+
+1. Работоспособный Kubernetes кластер.
+2. В файле `~/.kube/config` находятся данные для доступа к кластеру.
+3. Команда `kubectl get pods --all-namespaces` отрабатывает без ошибок.
+
+
 ---
 ### Создание тестового приложения
 
