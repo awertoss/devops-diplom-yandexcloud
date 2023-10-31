@@ -565,9 +565,7 @@ Destroy complete! Resources: 7 destroyed.
 1. Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
 2. Полученная конфигурация инфраструктуры является предварительной, поэтому в ходе дальнейшего выполнения задания возможны изменения.
 
-<p align="center">
-  <img width="1200" src="terraform/ya1.jpg">
-</p>
+
 
 ---
 ### Создание Kubernetes кластера
@@ -695,6 +693,39 @@ kube-system   nodelocaldns-wzhjr                         1/1     Running   0    
 3. Дашборды в grafana отображающие состояние Kubernetes кластера.
 4. Http доступ к тестовому приложению.
 
+```
+Создадим namespace
+kubectl create namespace monitoring
+Добавим репозиторий.
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm install stable prometheus-community/kube-prometheus-stack --namespace=monitoring
+
+
+Чтобы подключаться к серверу извне перенастроим сервисы(svc) созданные для kube-prometheus-stack.
+Другими слова изменим тип с кластерайпи на NodePort.
+
+kubectl edit svc stable-kube-prometheus-sta-prometheus -n monitoring
+
+kubectl edit svc stable-grafana -n monitoring
+root@ubuntuserver:/home/srg/git/mydiplom/monitoring# kubectl get svc -n monitoring
+NAME                                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                         AGE
+alertmanager-operated                     ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP      54m
+prometheus-operated                       ClusterIP   None            <none>        9090/TCP                        54m
+stable-grafana                            NodePort    10.233.32.82    <none>        80:30412/TCP                    55m
+stable-kube-prometheus-sta-alertmanager   ClusterIP   10.233.9.173    <none>        9093/TCP,8080/TCP               55m
+stable-kube-prometheus-sta-operator       ClusterIP   10.233.61.235   <none>        443/TCP                         55m
+stable-kube-prometheus-sta-prometheus     NodePort    10.233.4.39     <none>        9090:31680/TCP,8080:32342/TCP   55m
+stable-kube-state-metrics                 ClusterIP   10.233.55.71    <none>        8080/TCP                        55m
+stable-prometheus-node-exporter           ClusterIP   10.233.21.99    <none>        9100/TCP                        55m
+
+
+UserName: admin Password: prom-operator
+```
+
+<p align="center">
+  <img width="1200" src="picture/grafana1.jpg">
+</p>
 ---
 ### Установка и настройка CI/CD
 
