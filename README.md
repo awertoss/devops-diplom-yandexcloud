@@ -598,6 +598,8 @@ declare -a IPS=(51.250.32.69 51.250.28.209 51.250.87.99)
 Редактируем файл hosts.yaml руками. В частности добавим ansible_user: yc-user.
 mcedit kubespray/inventory/mycluster/hosts.yaml
 
+Редактируем файл inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml, чтобы был доступ к ластеру снаружи.
+Добавим параметр: supplementary_addresses_in_ssl_keys: [51.250.42.98]
 
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
 ....
