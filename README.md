@@ -728,6 +728,7 @@ UserName: admin Password: prom-operator
   <img width="1200" src="picture/grafana1.jpg">
 </p>
 ---
+
 ### Установка и настройка CI/CD
 
 Осталось настроить ci/cd систему для автоматической сборки docker image и деплоя приложения при изменении кода.
