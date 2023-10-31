@@ -689,6 +689,8 @@ kube-system   nodelocaldns-wzhjr                         1/1     Running   0    
 
 Ожидаемый результат:
 1. Git репозиторий с конфигурационными файлами для настройки Kubernetes.
+[Kubespray](https://github.com/kubernetes-sigs/kubespray)
+
 2. Http доступ к web интерфейсу grafana.
 3. Дашборды в grafana отображающие состояние Kubernetes кластера.
 4. Http доступ к тестовому приложению.
