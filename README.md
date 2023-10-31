@@ -593,7 +593,7 @@ pip install -r requirements.txt
 cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=(51.250.32.69 51.250.28.209 51.250.87.99)
 
-CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]
+CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
 Редактируем файл hosts.yaml руками. В частности добавим ansible_user: yc-user.
 mcedit kubespray/inventory/mycluster/hosts.yaml
