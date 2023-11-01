@@ -784,6 +784,13 @@ latest: digest: sha256:c6039d64697cc0afc771a8e796a2f0c5ad6f1de0530ad523f3f5f8149
 
 Подключаюсь на созданную машину и выполняю скрипт jenkins-install.sh Поднимаются контейнеры jenkins
 
+```
+docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMES
+6581a8a60a77   awertoss/myjenkins:latest   "/usr/bin/tini -- /u…"   13 seconds ago   Up 11 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   myjenkins
+31bddc7f6ee4   docker:dind                 "dockerd-entrypoint.…"   4 minutes ago    Up 4 minutes    2375/tcp, 0.0.0.0:2376->2376/tcp, :::2376->2376/tcp                                        jenkins-docker
+```
+
 ---
 ## Что необходимо для сдачи задания?
 
