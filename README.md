@@ -740,11 +740,6 @@ UserName: admin Password: prom-operator
 
 Можно использовать [teamcity](https://www.jetbrains.com/ru-ru/teamcity/), [jenkins](https://www.jenkins.io/), [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) или GitHub Actions.
 
-Ожидаемый результат:
-
-1. Интерфейс ci/cd сервиса доступен по http.
-2. При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
-3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
 #### Решение
 
@@ -790,6 +785,15 @@ CONTAINER ID   IMAGE                       COMMAND                  CREATED     
 6581a8a60a77   awertoss/myjenkins:latest   "/usr/bin/tini -- /u…"   13 seconds ago   Up 11 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   myjenkins
 31bddc7f6ee4   docker:dind                 "dockerd-entrypoint.…"   4 minutes ago    Up 4 minutes    2375/tcp, 0.0.0.0:2376->2376/tcp, :::2376->2376/tcp                                        jenkins-docker
 ```
+Ожидаемый результат:
+
+1. Интерфейс ci/cd сервиса доступен по http.
+
+<p align="center">
+  <img width="1200" src="picture/jenkinsweb.jpg">
+</p>
+2. При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
+3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
 ---
 ## Что необходимо для сдачи задания?
