@@ -808,7 +808,7 @@ CONTAINER ID   IMAGE                       COMMAND                  CREATED     
 <p align="center">
   <img width="1200" src="picture/commit_test.jpg">
 </p>
-
+[Jenkinsfile](https://github.com/awertoss/myapp/blob/main/Jenkinsfile)
 
 3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
