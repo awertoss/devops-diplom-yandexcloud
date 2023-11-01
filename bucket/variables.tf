@@ -19,7 +19,7 @@ variable "dockerhub_login" {
 }
 
 variable "dockerhub_password" {
-  default   = "volodin87"
+  default   = "v"
   sensitive = true
 }
 
