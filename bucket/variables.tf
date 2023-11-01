@@ -26,7 +26,7 @@ variable "dockerhub_password" {
 ################################################################################
 # GitHub
 variable "github_personal_access_token" {
-  default   = "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"
+  default   = "ghp_t3X****"
   sensitive = true
 }
 
