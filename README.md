@@ -592,10 +592,10 @@ declare -a IPS=(51.250.32.69 51.250.28.209 51.250.87.99)
 
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
-Редактируем файл hosts.yaml руками. В частности добавим ansible_user: yc-user.
+Редактируем файл hosts.yaml руками. В частности добавим ansible_user: andible.
 mcedit kubespray/inventory/mycluster/hosts.yaml
 
-Редактируем файл inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml, чтобы был доступ к ластеру снаружи.
+Редактируем файл inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml, чтобы конфиг подключения был сформировал в файле admin.conf.
 Добавим параметр: kubeconfig_localhost: true
 
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
