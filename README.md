@@ -808,7 +808,38 @@ CONTAINER ID   IMAGE                       COMMAND                  CREATED     
 <p align="center">
   <img width="1200" src="picture/commit_test.jpg">
 </p>
+
 [Jenkinsfile](https://github.com/awertoss/myapp/blob/main/Jenkinsfile)
+
+```
+Last GitHub Push
+
+Started on Nov 1, 2023, 8:11:02 PM
+Started by event from 140.82.115.94 ⇒ http://158.160.86.61:8080/github-webhook/ on Wed Nov 01 20:11:02 UTC 2023
+Using strategy: Default
+[poll] Last Built Revision: Revision 2a62675df522e8bba27b04238ab85c531afddcab (refs/remotes/origin/main)
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git ls-remote -h -- https://github.com/awertoss/myapp.git # timeout=10
+Found 1 remote heads on https://github.com/awertoss/myapp.git
+[poll] Latest remote head revision on refs/heads/main is: f7f9931226a45fa166a2a182a80ee4500f765be2
+Using strategy: Default
+[poll] Last Built Revision: Revision 2a62675df522e8bba27b04238ab85c531afddcab (refs/remotes/origin/main)
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git ls-remote -h -- https://github.com/awertoss/myapp.git # timeout=10
+Found 1 remote heads on https://github.com/awertoss/myapp.git
+[poll] Latest remote head revision on refs/heads/main is: f7f9931226a45fa166a2a182a80ee4500f765be2
+Done. Took 2 sec
+Changes found
+
+```
 
 3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
