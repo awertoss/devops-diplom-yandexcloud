@@ -797,6 +797,11 @@ CONTAINER ID   IMAGE                       COMMAND                  CREATED     
 ```
 Автоматический запуск pipline выполняется с помощью настройки webhooks в репозитории приложения.
 ```
+
+<p align="center">
+  <img width="1200" src="picture/webhooks.jpg">
+</p>
+
 3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
 ---
