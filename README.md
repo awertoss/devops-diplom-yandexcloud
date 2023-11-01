@@ -205,7 +205,7 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 3. Создайте VPC с подсетями в разных зонах доступности.
 
 ```
-В папке yandex
+В корне выполняем:
 terraform init
 terraform apply
 
