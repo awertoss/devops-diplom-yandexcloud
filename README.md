@@ -54,9 +54,9 @@ key_algorithm: RSA_2048
    б. Альтернативный вариант:  [Terraform Cloud](https://app.terraform.io/)
 
 Создал конфигурацию.
-Конфиг: [terraform](terraform/)
+Конфиг: [конфигурация](/)
 ```
-В папке 1bucket.
+В папке bucket.
 terraform init
 terraform apply
 erraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
