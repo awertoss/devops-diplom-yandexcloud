@@ -1,11 +1,11 @@
 ################################################################################
 # Yandex IDs
 variable "yandex_cloud_id" {
-  default = "b1gnjst4dee7j34hrh7s"
+  default = "b1g*****rh7s"
 }
 
 variable "yandex_folder_id" {
-  default = "b1gd02p4ii36h57v2h14"
+  default = "b1gd0****v2h14"
 }
 
 variable "yandex_compute_default_zone" {
