@@ -843,7 +843,10 @@ Changes found
 3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
 
 Самое сложное.
-Создаем pipline который будет выполнять последний пункт задания.[Jenkinsfile](https://github.com/awertoss/devops-diplom-yandexcloud/blob/main/jenkins/app/Jenkinsfile)) 
+Создаем pipline который будет выполнять последний пункт задания.
+<p>
+ https://github.com/awertoss/devops-diplom-yandexcloud/blob/main/jenkins/app/Jenkinsfile
+</p>
 
 
 
