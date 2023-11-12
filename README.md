@@ -205,7 +205,12 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 3. Создайте VPC с подсетями в разных зонах доступности.
 
 ```
-В корне выполняем:
+Перед создание виртуальных машин. Выполним:
+git clone https://github.com/kubernetes-sigs/kubespray.git
+В папке kubespray: cp -rfp inventory/sample inventory/mycluster
+Это делается, потому что при создании виртуальных машин формируется динамический inventory.
+
+Далее в корне выполняем:
 terraform init
 terraform apply
 
