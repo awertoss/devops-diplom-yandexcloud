@@ -591,31 +591,26 @@ Destroy complete! Resources: 7 destroyed.
 Из папки kubespray
 Установка зависимостей
 pip install -r requirements.txt
-
-cp -rfp inventory/sample inventory/mycluster
-#declare -a IPS=(51.250.32.69 51.250.28.209 51.250.87.99)
-declare -a IPS=($(terraform output -raw node_0),$(terraform output -raw node_1),$(terraform output -raw node_2)
-Здесь terraform output -raw node_0 вывод, которую получили через terraform output.
-
-CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
-
-Редактируем файл hosts.yaml руками. В частности добавим ansible_user: andible.
-mcedit kubespray/inventory/mycluster/hosts.yaml
-
 Редактируем файл inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml, чтобы конфиг подключения был сформировал в файле admin.conf.
 Добавим параметр: kubeconfig_localhost: true
 
-ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
-....
-Friday 20 October 2023  14:19:54 +0000 (0:00:00.111)       0:24:16.923 ********
-Friday 20 October 2023  14:19:54 +0000 (0:00:00.064)       0:24:16.988 ********
-Friday 20 October 2023  14:19:54 +0000 (0:00:00.064)       0:24:17.052 ********
+Запускаем playbook, в качестве inventory берем файл, который сформирон в прошлом автоматически inventory-default.ini.
+ansible-playbook -i inventory/mycluster/inventory-default.ini cluster.yml -b -v
 
-PLAY RECAP ********************************************************************************************************************************************************************
+Sunday 12 November 2023  22:01:28 +0300 (0:00:00.096)       0:22:39.755 *******
+Sunday 12 November 2023  22:01:28 +0300 (0:00:00.063)       0:22:39.819 *******
+Sunday 12 November 2023  22:01:28 +0300 (0:00:00.064)       0:22:39.884 *******
+
+PLAY RECAP ***************************************************************************************************************************************************
+control-0                  : ok=756  changed=153  unreachable=0    failed=0    skipped=1280 rescued=0    ignored=8
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-node0                      : ok=751  changed=152  unreachable=0    failed=0    skipped=1285 rescued=0    ignored=8
-node1                      : ok=511  changed=94   unreachable=0    failed=0    skipped=784  rescued=0    ignored=1
-node2                      : ok=511  changed=94   unreachable=0    failed=0    skipped=783  rescued=0    ignored=1
+worker-0                   : ok=512  changed=94   unreachable=0    failed=0    skipped=781  rescued=0    ignored=0
+worker-1                   : ok=512  changed=94   unreachable=0    failed=0    skipped=780  rescued=0    ignored=0
+
+
+
+
+
 
 ```
 По завершении установки, скопировав содержимое файла admin.conf в файл ~/.kube/config.
