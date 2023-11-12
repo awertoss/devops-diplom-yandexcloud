@@ -24,34 +24,4 @@ resource "null_resource" "inventory-render" {
 }
 
 
-#resource "null_resource" "k8s-cluster" {
-#  provisioner "local-exec" {
-#    command = "sed -i 's/[#, ]*supplementary_addresses_in_ssl_keys:/supplementary_addresses_in_ssl_keys: [${yandex_compute_instance.control.network_interface.0.nat_ip_address}] #/g' ./kubespray/inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml"
-#  }
 
-#  triggers = {
-#    template = data.template_file.inventory.rendered
-#  }
-#}
-
-# data "template_file" "k8s-cluster" {
-#   template = file("${path.module}/templates/k8s-cluster.tpl")
-
-#   depends_on = [
-#     null_resource.inventory-render
-#   ]
-
-#   vars = {
-#     list_control = "${yandex_compute_instance.control.network_interface.0.nat_ip_address}"
-#   }
-# }
-
-# resource "null_resource" "k8s-cluster-render" {
-#   provisioner "local-exec" {
-#     command = "echo '${data.template_file.k8s-cluster.rendered}' > ./kubespray/inventory/pscluster/group_vars/k8s_cluster/k8s-cluster.yml"
-#   }
-
-#   triggers = {
-#     template = data.template_file.k8s-cluster.rendered
-#   }
-# }
