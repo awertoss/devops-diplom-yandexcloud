@@ -721,6 +721,12 @@ stable-kube-prometheus-sta-prometheus     NodePort    10.233.4.39     <none>    
 stable-kube-state-metrics                 ClusterIP   10.233.55.71    <none>        8080/TCP                        55m
 stable-prometheus-node-exporter           ClusterIP   10.233.21.99    <none>        9100/TCP                        55m
 
+Создадим ingress-nginx-controller
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml -n monitoring
+
+Далее ingress
+kubectl apply -f monitoring/ -n monitoring
 
 UserName: admin Password: prom-operator
 ```
