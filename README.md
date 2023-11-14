@@ -734,6 +734,38 @@ UserName: admin Password: prom-operator
 
 Для выполнения этого задания использовал ci/cd jenkins. Выполнил deploy в k8s по документации [https://www.jenkins.io/doc/book/installing/kubernetes/]
 
+Предваритетельно создан образ на любой виртуальной машине. [Dockerfile](jenkins/Dockerfile).
+```
+docker build -t awertoss/myjenkins
+docker login --username awertoss
+docker push awertoss/myjenkins:latest
+The push refers to repository [docker.io/awertoss/myjenkins]
+1c0ea659f91a: Pushed
+b5c4debd4d10: Pushed
+444fdb600538: Pushed
+bfb1cde74e9a: Pushed
+aba1a6e2ba1e: Pushed
+67cabdd5410e: Pushed
+b0eda3723244: Pushed
+809e58f096c0: Pushed
+43bd382499b6: Pushed
+63c32fac94af: Pushed
+32693a7724ba: Pushed
+3f3b425d51d8: Pushed
+455695670809: Pushed
+97fcf5822545: Pushed
+1023fc2c6f22: Pushed
+c6e06c65f8f4: Pushed
+c28dd92cbb26: Pushed
+latest: digest: sha256:c6039d64697cc0afc771a8e796a2f0c5ad6f1de0530ad523f3f5f814928087bb size: 3885
+
+```
+<p align="center">
+  <img width="1200" src="picture/myjenkins.jpg">
+</p>
+
+
+
 ```
 Из папки jenkins выполним деплой.
 kubectl create namespace devops-tools
