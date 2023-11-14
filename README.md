@@ -780,9 +780,7 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 
 ```
-<p align="center">
-  <img width="1200" src="picture/myjenkins.jpg">
-</p>
+
 
 
 ```
