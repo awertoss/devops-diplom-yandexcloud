@@ -737,7 +737,7 @@ UserName: admin Password: prom-operator
 Предваритетельно создан образ на любой виртуальной машине. [Dockerfile](jenkins/Dockerfile).
 
 ```
-docker build -t awertoss/myjenkins
+docker build -t awertoss/myjenkins:latest .
 docker login --username awertoss
 docker push awertoss/myjenkins:latest
 The push refers to repository [docker.io/awertoss/myjenkins]
