@@ -1,18 +1,3 @@
-locals {
-  vm_cores = {
-    stage = 2
-    prod  = 4
-  }
-  vm_memory = {
-    stage = 2
-    prod  = 4
-  }
-  instance_count = {
-    stage = 1
-    prod  = 2
-  }
-}
-
 resource "yandex_compute_instance" "control" {
   count = 1
   name = "control-${count.index}"
