@@ -735,6 +735,7 @@ UserName: admin Password: prom-operator
 Для выполнения этого задания использовал ci/cd jenkins. Выполнил deploy в k8s по документации [https://www.jenkins.io/doc/book/installing/kubernetes/]
 
 Предваритетельно создан образ на любой виртуальной машине. [Dockerfile](jenkins/Dockerfile).
+
 ```
 docker build -t awertoss/myjenkins
 docker login --username awertoss
@@ -783,13 +784,7 @@ kubectl apply -f service.yaml
   <img width="1200" src="picture/myjenkins.jpg">
 </p>
 
-Подключаюсь на созданную машину и выполняю скрипт jenkins-install.sh Поднимаются контейнеры jenkins
 
-```
-docker ps
-CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMES
-6581a8a60a77   awertoss/myjenkins:latest   "/usr/bin/tini -- /u…"   13 seconds ago   Up 11 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   myjenkins
-31bddc7f6ee4   docker:dind                 "dockerd-entrypoint.…"   4 minutes ago    Up 4 minutes    2375/tcp, 0.0.0.0:2376->2376/tcp, :::2376->2376/tcp                                        jenkins-docker
 ```
 Ожидаемый результат:
 
