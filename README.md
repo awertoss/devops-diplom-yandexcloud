@@ -216,6 +216,7 @@ terraform apply
 
 
 ```
+
 4. Убедитесь, что теперь вы можете выполнить команды `terraform destroy` и `terraform apply` без дополнительных ручных действий.
 
 ```
@@ -791,6 +792,7 @@ kubectl apply -f service.yaml
 <p align="center">
   <img width="1200" src="picture/jenkinsweb.jpg">
 </p>
+
 2. При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
 
 ```
@@ -837,7 +839,6 @@ Found 1 remote heads on https://github.com/awertoss/myapp.git
 [poll] Latest remote head revision on refs/heads/main is: f7f9931226a45fa166a2a182a80ee4500f765be2
 Done. Took 2 sec
 Changes found
-
 ```
 
 3. При создании тега (например, v1.0.0) происходит сборка и отправка с соответствующим label в регистри, а также деплой соответствующего Docker образа в кластер Kubernetes.
