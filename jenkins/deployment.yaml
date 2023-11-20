@@ -23,20 +23,11 @@ spec:
           - sh
           - "-c"
           - |
-            cp -r /var/jenkins_home_temp/* /var/jenkins_home/
             chown -R 1000:1000 /var/jenkins_home
         volumeMounts:
         - name: jenkins-home
           mountPath: /var/jenkins_home
-    #    - name: jenkins-credentials
-    #      mountPath: /var/jenkins_home_temp/exported-credentials.xml
-    #      subPath: exported-credentials.xml
-    #    - name: jenkins-job-stage
-    #      mountPath: /var/jenkins_home_temp/jobs/diploma-test-app-stage/config.xml
-    #      subPath: config.xml
-    #    - name: jenkins-job-prod
-    #      mountPath: /var/jenkins_home_temp/jobs/diploma-test-app-prod/config.xml
-    #      subPath: config.xml
+  
 
       containers:
 
