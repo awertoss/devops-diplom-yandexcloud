@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      securityContext:
+        fsGroup: 1000 # Jenkins group (1000) read/write access to volumes.
+
+      initContainers:
+      - name: volume-mount-hack
+        image: busybox
+        command: 
+          - sh
+          - "-c"
+          - |
+            cp -r /var/jenkins_home_temp/* /var/jenkins_home/
+            chown -R 1000:1000 /var/jenkins_home
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+    #    - name: jenkins-credentials
+    #      mountPath: /var/jenkins_home_temp/exported-credentials.xml
+    #      subPath: exported-credentials.xml
+    #    - name: jenkins-job-stage
+    #      mountPath: /var/jenkins_home_temp/jobs/diploma-test-app-stage/config.xml
+    #      subPath: config.xml
+    #    - name: jenkins-job-prod
+    #      mountPath: /var/jenkins_home_temp/jobs/diploma-test-app-prod/config.xml
+    #      subPath: config.xml
+
+      containers:
+
+      - name: jenkins
+        image:  awertoss/myjenkins:v1
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+
+
+        env:
+        - name: JAVA_OPTS
+          value: "-Djenkins.install.runSetupWizard=false"
+        - name: DOCKER_HOST
+          value: tcp://localhost:2375
+
+      - name: dind
+        image: "docker:dind"
+        imagePullPolicy: Always
+        command: ["dockerd", "--host", "tcp://127.0.0.1:2375"]
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - name: launcher-storage
+            mountPath: /var/lib/docker
+            subPath: docker
+
+      volumes:
+      - name: jenkins-home
+        emptyDir: { }
+      - name: launcher-storage
+        emptyDir: {}
+      - name: jenkins-credentials
