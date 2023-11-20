@@ -770,15 +770,12 @@ latest: digest: sha256:c6039d64697cc0afc771a8e796a2f0c5ad6f1de0530ad523f3f5f8149
 
 ```
 Из папки jenkins выполним деплой.
-kubectl create namespace devops-tools
-
-kubectl apply -f serviceAccount.yaml
-
-kubectl create -f volume.yaml
+kubectl create namespace jenkins
 
 kubectl apply -f deployment.yaml
 
 kubectl apply -f service.yaml
+
 
 ```
 
@@ -857,7 +854,9 @@ Changes found
   <img width="1200" src="picture/awertoss-tag.jpg">
 </p>
 
-
+<p align="center">
+  <img width="1200" src="picture/deploy-k8s.jpg">
+</p>
 
 ---
 ## Что необходимо для сдачи задания?
