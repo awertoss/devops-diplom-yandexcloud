@@ -847,6 +847,9 @@ Changes found
 <p>
  https://github.com/awertoss/devops-diplom-yandexcloud/blob/main/jenkins/app/Jenkinsfile
 </p>
+<p align="center">
+  <img width="1200" src="picture/tagv1.0.0.jpg">
+</p>
 
 
 
