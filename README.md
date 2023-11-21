@@ -781,7 +781,7 @@ kubectl apply -f service.yaml
 
 
 
-```
+
 Ожидаемый результат:
 
 1. Интерфейс ci/cd сервиса доступен по http.
