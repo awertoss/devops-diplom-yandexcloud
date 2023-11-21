@@ -800,7 +800,7 @@ kubectl apply -f service.yaml
   <img width="1200" src="picture/webhooks.jpg">
 </p>
 
-```
+
 Для проверки в репозиторий https://github.com/awertoss/myapp/tree/main добавлю файл test. Тем самым сделал коммит.
 
 <p align="center">
