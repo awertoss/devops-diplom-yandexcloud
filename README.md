@@ -792,16 +792,16 @@ kubectl apply -f service.yaml
 
 2. При любом коммите в репозиторие с тестовым приложением происходит сборка и отправка в регистр Docker образа.
 
-```
+
 Автоматический запуск pipline выполняется с помощью настройки webhooks в репозитории приложения.
-```
+
 
 <p align="center">
   <img width="1200" src="picture/webhooks.jpg">
 </p>
 
 ```
-Для проверки в репозиторий https://github.com/awertoss/myapp/tree/main добавлю файл test. Тем самым сделай коммит.
+Для проверки в репозиторий https://github.com/awertoss/myapp/tree/main добавлю файл test. Тем самым сделал коммит.
 
 <p align="center">
   <img width="1200" src="picture/commit_test.jpg">
